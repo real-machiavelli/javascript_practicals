@@ -1,34 +1,3 @@
-const product = [{
-  image :  'images/products/athletic-cotton-socks-6-pairs.jpg',
-  name : 'black and gray athletic cotton socks',
-  rating : {
-    star : 4.5,
-    count : 87
-  },
-  priceInCents : '1090'
-
-},
-{
-  image :  'images/products/intermediate-composite-basketball.jpg',
-  name : 'intermediate size basketball',
-  rating : {
-    star : 4,
-    count : 127
-  },
-  priceInCents : '2090'
-
-},
-{
-  image :  'images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg',
-  name : 'asults plain cotton T-shirt',
-  rating : {
-    star : 4,
-    count : 56
-  },
-  priceInCents : '790'
-
-}
-]
 
 let productHTML = '';
 
