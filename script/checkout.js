@@ -2,18 +2,19 @@ import {cart} from '../data/cart.js';
 
 import {product} from '../data/products.js';
 
-console.log('hello world');
+
 
 let cartSummaryHTML = '';
 
     cart.forEach((cartItem) => {
     const productId = cartItem.productid;
 
+
     let matchingProduct;
 
     product.forEach((product) => {
 
-      if (productid === productId){
+      if (product.id === productId){
 
         matchingProduct = product;
       }
@@ -35,7 +36,7 @@ let cartSummaryHTML = '';
           ${matchingProduct.name}
         </div>
         <div class="product-price">
-          ${(matchingProduct.priceCents) / 100}
+          ${((matchingProduct.priceCents) / 100).toFixed(2)}
         </div>
         <div class="product-quantity">
           <span>
@@ -98,6 +99,6 @@ let cartSummaryHTML = '';
   `;
 });
 
-console.log(cartSummaryHTML);
+
 
 document.querySelector('.js-cart-summary').innerHTML = cartSummaryHTML;
