@@ -1,5 +1,6 @@
 import {cart} from "../data/cart.js";
 import {product} from "../data/products.js";
+import {formatCurrency} from "./util/money.js";
 
 let productHTML = '';
 
@@ -22,7 +23,7 @@ product.forEach((product) => {
       </div>
 
       <div class="product-price">
-        $${(product.priceCents / 100).toFixed(2)}
+        $${formatCurrency(product.priceCents)}
       </div>
 
       <div class="product-quantity-container">
@@ -78,7 +79,7 @@ document.querySelectorAll('.js-add-cart').forEach((button) => {
     });
 
    }
-   cartQuantity = 0;
+  let cartQuantity = 0;
    
    cart.forEach((item) => {
     cartQuantity +=item.quantity;
