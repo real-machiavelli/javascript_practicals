@@ -4,7 +4,9 @@ import {formatCurrency} from './util/money.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import {deliveryOptiions} from '../data/deliveryOptions.js'
 
-let cartSummaryHTML = '';
+function renderOrderSummary() {
+
+    let cartSummaryHTML = '';
 
     cart.forEach((cartItem) => {
     const productId = cartItem.productId;
@@ -78,14 +80,14 @@ let cartSummaryHTML = '';
     </div>
     </div>
 
-  `;
-});
+    `;
+    });
 
-function deliveryOptionsHTML(matchingProduct, cartItem) {
+    function deliveryOptionsHTML(matchingProduct, cartItem) {
 
-  let html = '';
+    let html = '';
 
-  deliveryOptiions.forEach((deliveryOption) => {
+    deliveryOptiions.forEach((deliveryOption) => {
     const today = dayjs();
     const deliveryDate = today.add(deliveryOption.deliveryDay, 'days');
 
@@ -97,7 +99,7 @@ function deliveryOptionsHTML(matchingProduct, cartItem) {
 
     const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
 
-   html += `
+    html += `
     <div class="delivery-option js-delivery-option"
     data-product-id="${matchingProduct.id}"
     data-delivery-option-id="${deliveryOption.id}">
@@ -112,37 +114,39 @@ function deliveryOptionsHTML(matchingProduct, cartItem) {
         ${prizeString} Shipping
       </div>
     </div>
-  </div>
+    </div>
     `
 
-  });
+    });
 
-  return html;
-}
+    return html;
+    }
 
 
 
-document.querySelector('.js-cart-summary').innerHTML = cartSummaryHTML;
+    document.querySelector('.js-cart-summary').innerHTML = cartSummaryHTML;
 
-document.querySelectorAll('.js-delete-link').forEach((link) => {
-  link.addEventListener('click', () =>{
+    document.querySelectorAll('.js-delete-link').forEach((link) => {
+    link.addEventListener('click', () =>{
     const productId = link.dataset.productId;
 
     removeFromCart(productId);
-    
+
     const container = document.querySelector(`.js-cart-item-container-${productId}`);
 
     container.remove();
-  } )
-});
+    } )
+    });
 
-document.querySelectorAll('.js-delivery-option').forEach((element) =>{
-  element.addEventListener('click', () => {
+    document.querySelectorAll('.js-delivery-option').forEach((element) =>{
+    element.addEventListener('click', () => {
     const {productId, deliveryOptionId } = element.dataset;
-   
 
-    
     updateDeliveryOption(productId, deliveryOptionId);
 
+    renderOrderSummary();
+    });  
   });
-});
+
+}
+renderOrderSummary();
