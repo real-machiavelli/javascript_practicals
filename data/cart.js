@@ -1,4 +1,10 @@
-export let cart = JSON.parse(localStorage.getItem('cart'));
+export let cart;
+
+loadFormLocalstorage();
+
+ export function loadFormLocalstorage() {
+
+  cart = JSON.parse(localStorage.getItem('cart'));
 
 if (!cart) {
 cart = [{
@@ -11,6 +17,8 @@ cart = [{
   quantity: 1,
   deliveryOptionId: '2'
 }];
+
+}
 
 }
 
