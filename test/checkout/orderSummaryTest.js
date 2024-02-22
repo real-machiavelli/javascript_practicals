@@ -1,6 +1,8 @@
 import { renderOrderSummary } from "../../script/checkout/orderSummary.js";
 import {loadFormLocalstorage, cart} from '../../data/cart.js';
 
+console.log('helool boss');
+
 describe('test suit: renderOrderSummary', () => {
   
   const productId1 = 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6';
