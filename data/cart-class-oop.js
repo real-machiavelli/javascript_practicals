@@ -1,17 +1,17 @@
 class Cart {
 
   cartItems;
-  localstorage;
+  #localstorage;
 
   constructor(localstorage) {
-    this.localstorage = localstorage;
-    this.loadFormLocalstorage();
+    this.#localstorage = localstorage;
+    this.#loadFormLocalstorage();
 
   }
 
-  loadFormLocalstorage() {
+  #loadFormLocalstorage() {
   
-    this.cartItems = JSON.parse(localStorage.getItem(this.localstorage));
+    this.cartItems = JSON.parse(localStorage.getItem(this.#localstorage));
   
   if (!this.cartItems) {
   this.cartItems = [{
@@ -52,7 +52,7 @@ class Cart {
   }
   
   saveToLocastorage(){
-    localStorage.setItem(this.localstorage, JSON.stringify(this.cartItems));
+    localStorage.setItem(this.#localstorage, JSON.stringify(this.cartItems));
   }
   
   removeFromCart(productId){
