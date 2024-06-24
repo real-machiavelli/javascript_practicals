@@ -1,11 +1,17 @@
 import {renderOrderSummary} from "./checkout/orderSummary.js";
 import {renderPaymentSummary} from "./checkout/paymentSummary.js";
 import { cart } from "../data/cart.js";
-import '../data/backendpractice.js';
+import { loadProduct } from "../data/products.js";
+// import '../data/backendpractice.js';
 
-renderOrderSummary();
 
-renderPaymentSummary();
+loadProduct(() => {
+
+  renderOrderSummary();
+
+  renderPaymentSummary();
+
+})
 
 updateCartQuantity();
 
