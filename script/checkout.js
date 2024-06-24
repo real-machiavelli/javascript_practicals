@@ -5,13 +5,26 @@ import { loadProduct } from "../data/products.js";
 // import '../data/backendpractice.js';
 
 
-loadProduct(() => {
+new Promise((resolve) => {
+  loadProduct(() => {
+    resolve();
+
+  });
+}).then(() => {
+
+  renderOrderSummary();
+  renderPaymentSummary();
+});
+
+
+/* loadProduct(() => {
 
   renderOrderSummary();
 
   renderPaymentSummary();
 
 })
+  */
 
 updateCartQuantity();
 
