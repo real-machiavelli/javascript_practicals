@@ -83,6 +83,8 @@ function loadProductFetch(){
     });
     console.log('load product');
 
+    }).catch(() => {
+      console.log('and unexpected error ');
     }); 
     
     return promise;

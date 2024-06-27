@@ -4,6 +4,13 @@ import { cart } from "../data/cart.js";
 import { loadProduct } from "../data/products.js";
 // import '../data/backendpractice.js';
 
+async function loadPage(){
+  console.log("load page")
+}
+
+loadPage().then(() => {
+  console.log('load another page boss');
+})
 
 new Promise((resolve) => {
   loadProduct(() => {
